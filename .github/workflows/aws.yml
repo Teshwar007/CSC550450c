@@ -35,7 +35,7 @@ env:
   ECR_REPOSITORY: public.ecr.aws/b8e4j4o2/csc550c_wordpress           # set this to your Amazon ECR repository name
   ECS_SERVICE: stock                 # set this to your Amazon ECS service name
   ECS_CLUSTER: 550c_cluster                 # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: arn:aws:ecs:us-east-1:552729696163:task-definition/tWordpress # set this to the path to your Amazon ECS task definition
+  ECS_TASK_DEFINITION: .github/workflows/aws.yml # set this to the path to your Amazon ECS task definition
                                                # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: wordpress           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
