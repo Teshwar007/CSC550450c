@@ -1,0 +1,61 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:552729696163:task-definition/tWordpress:4",
+    "containerDefinitions": [
+        {
+            "name": "wordpress",
+            "image": "public.ecr.aws/b8e4j4o2/csc550c_wordpress:latest",
+            "cpu": 0,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "mountPoints": [
+                {
+                    "sourceVolume": "efs-html",
+                    "containerPath": "/var/www/html"
+                }
+            ],
+            "volumesFrom": []
+        }
+    ],
+    "family": "tWordpress",
+    "networkMode": "bridge",
+    "revision": 4,
+    "volumes": [
+        {
+            "name": "efs-html",
+            "efsVolumeConfiguration": {
+                "fileSystemId": "fs-07551b789c13c562c",
+                "rootDirectory": "/",
+                "transitEncryption": "ENABLED"
+            }
+        }
+    ],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "ecs.capability.efsAuth"
+        },
+        {
+            "name": "ecs.capability.efs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.25"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2"
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "registeredAt": "2023-01-27T16:14:33.662000+00:00",
+    "registeredBy": "arn:aws:iam::552729696163:root"
+}
