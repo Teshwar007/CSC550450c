@@ -32,7 +32,7 @@ on:
 
 env:
   AWS_REGION: us-east-1                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: csc550c_wordpress           # set this to your Amazon ECR repository name
+  ECR_REPOSITORY: public.ecr.aws/b8e4j4o2/csc550c_wordpress           # set this to your Amazon ECR repository name
   ECS_SERVICE: stock                 # set this to your Amazon ECS service name
   ECS_CLUSTER: 550c_cluster                 # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: .github/workflows/task-definition.json # set this to the path to your Amazon ECS task definition
@@ -41,7 +41,6 @@ env:
                                                # containerDefinitions section of your task definition
 
 permissions:
-  id-token: write
   contents: read
 
 jobs:
@@ -61,18 +60,14 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
-    - name: Login to Amazon ECR Public
+    - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
-      with:
-          registry-type: public
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        REGISTRY_ALIAS: b8e4j4o2
-        REPOSITORY: csc550c_wordpress
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and
@@ -80,8 +75,7 @@ jobs:
         # be deployed to ECS.
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG:$IMAGE_TAG" >> $GITHUB_OUTPUT
-
+        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
