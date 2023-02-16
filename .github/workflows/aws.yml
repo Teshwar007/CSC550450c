@@ -38,7 +38,6 @@ env:
   ECS_TASK_DEFINITION: .github/workflows/task-definition.json # set this to the path to your Amazon ECS task definition
                                                # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: wordpress
-  CI: false 
                                            
 
 permissions:
