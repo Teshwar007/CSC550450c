@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:552729696163:task-definition/tWordpress:22",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:552729696163:task-definition/tWordpress:27",
     "containerDefinitions": [
         {
             "name": "wordpress",
