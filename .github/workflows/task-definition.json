@@ -3,7 +3,7 @@
     "containerDefinitions": [
         {
             "name": "wordpress",
-            "image": "public.ecr.aws/b8e4j4o2/csc550c_wordpress@sha256:63a40d433d89cff7b084e6f1c78542a545da44c386b79305b2f612450e7204ff",
+            "image": "public.ecr.aws/b8e4j4o2/csc550c_wordpress:latest",
             "cpu": 0,
             "memory": 128,
             "portMappings": [
