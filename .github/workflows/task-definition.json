@@ -4,7 +4,7 @@
         {
             "name": "wordpress",
             "image": "public.ecr.aws/b8e4j4o2/csc550c_wordpress@sha256:63a40d433d89cff7b084e6f1c78542a545da44c386b79305b2f612450e7204ff",
-            "cpu": 20,
+            "cpu": 0,
             "memory": 128,
             "portMappings": [
                 {
@@ -46,6 +46,9 @@
             "name": "ecs.capability.efs"
         },
         {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+        },
+        {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.25"
         }
     ],
@@ -56,6 +59,7 @@
     "requiresCompatibilities": [
         "EC2"
     ],
-    "registeredAt": "2023-01-27T16:14:33.662000+00:00",
-    "registeredBy": "arn:aws:iam::552729696163:root"
+    "registeredAt": "2023-02-23T00:56:41.879Z",
+    "registeredBy": "arn:aws:iam::552729696163:root",
+    "tags": []
 }
