@@ -16,7 +16,7 @@ fi
  
 # Add health check file
 /bin/touch /var/www/localhost/htdocs/health.txt
-echo "This is the latest Update" > /var/www/localhost/htdocs/health.txt
+echo "This is the latest Update 1" > /var/www/localhost/htdocs/health.txt
  
 # Change ownership of www root
 /bin/chown -R nobody:nobody /var/www/localhost/htdocs
