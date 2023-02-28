@@ -1,6 +1,6 @@
 FROM alpine:3.8
  
-LABEL maintainer "ept007@latech.edu"
+LABEL maintainer "ept008@latech.edu"
  
 RUN apk update && apk upgrade && apk add apache2 && \
     apk add php7-fpm apache2-proxy bash php7-mysqli && \
